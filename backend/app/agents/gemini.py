@@ -11,7 +11,7 @@ class GeminiAgent:
 
         genai.configure(api_key=api_key)
         # using the users requested model string
-        self.model = genai.GenerativeModel('models/gemini-1.5-flash')
+        self.model = genai.GenerativeModel('gemini-pro')
 
     async def execute(self, prompt: str) -> str:
         if not self.model:
