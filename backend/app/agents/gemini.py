@@ -22,4 +22,15 @@ class GeminiAgent:
             response = self.model.generate_content(prompt)
             return response.text
         except Exception as e:
+            error_str = str(e)
+            if "404" in error_str or "not found" in error_str.lower():
+                # Self-Healing: Switch to gemini-pro and retry
+                try:
+                    # Fallback to gemini-pro
+                    self.model = genai.GenerativeModel('gemini-pro')
+                    response = self.model.generate_content(prompt)
+                    return response.text
+                except Exception as e2:
+                     return f"Employee Gemini is unreachable (Fallback failed). Error: {str(e2)}"
+
             return f"Employee Gemini is currently unreachable. Error: {str(e)}"
