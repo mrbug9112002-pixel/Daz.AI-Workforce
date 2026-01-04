@@ -31,7 +31,7 @@ class GeminiAgent:
             # Given the instruction "Model: gemini-2.0-flash", we use generating content.
             
             response = self.client.models.generate_content(
-                model="gemini-1.5-flash-latest",
+                model="gemini-1.5-flash",
                 contents=prompt
             )
             return response.text
