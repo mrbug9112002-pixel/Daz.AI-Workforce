@@ -1,0 +1,19 @@
+# Dependencies
+backend/venv
+backend/__pycache__
+frontend/node_modules
+.env
+
+# Next.js
+frontend/.next
+frontend/out
+
+# IDEs
+.vscode
+.idea
+
+# System
+.DS_Store
+
+# Brain Artifacts (Optional, but good to keep out of repo if personal)
+brain/
