@@ -11,7 +11,15 @@ class GeminiAgent:
 
         genai.configure(api_key=api_key)
         # using the users requested model string
-        self.model = genai.GenerativeModel('gemini-pro')
+        # Anti-Gravity Fallback Logic
+        try:
+            # Try the most stable production name first
+            self.model = genai.GenerativeModel('gemini-1.5-flash')
+        except:
+            # Fallback to the universal alias if Flash fails
+            self.model = genai.GenerativeModel('gemini-pro')
+        
+        print(f"Anti-Gravity Engine initialized with: {self.model.model_name}")
 
     async def execute(self, prompt: str) -> str:
         if not self.model:
