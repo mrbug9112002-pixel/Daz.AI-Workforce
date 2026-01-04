@@ -1,0 +1,9 @@
+@echo off
+set "PATH=%PATH%;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\Program Files (x86)\Git\cmd;C:\Users\%USERNAME%\AppData\Local\Programs\Git\cmd"
+
+echo Adding changes...
+git add .
+echo Committing...
+git commit -m "Phase 6: Route Coding tasks to Gemini (Cost Optimization)"
+echo Pushing...
+git push

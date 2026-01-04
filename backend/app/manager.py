@@ -57,7 +57,16 @@ class ManagerAgent:
         else:
             agent_name = winner["name"]
             if "Claude" in agent_name:
-                result = await self.claude.execute(prompt)
+                # OVERRIDE: Use Gemini for Coding tasks to save costs (Phase 6 Request)
+                # Original: result = await self.claude.execute(prompt)
+                
+                # Prepend System Instruction for Gemini
+                dev_prompt = f"SYSTEM INSTRUCTION: You are an Expert Full-Stack Developer. Write clean, efficient, and well-documented code.\n\nUSER TASK: {prompt}"
+                result = await self.gemini.execute(dev_prompt)
+                
+                # Update agent name to reflect the proxy
+                agent_name = "Gemini (Acting as Claude)"
+                
             elif "DeepSeek" in agent_name:
                 result = await self.deepseek.execute(prompt)
             else:
