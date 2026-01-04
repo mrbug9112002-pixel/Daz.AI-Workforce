@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000'; // Default FastAPI port
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://daz-ai-workforce.onrender.com';
 
 export interface TaskResponse {
     assigned_agent: string;
